@@ -53,7 +53,7 @@
         <!-- 指定数据库视图 -->
         <!-- <table tableName="client_vo"></table>-->
         <!-- <table tableName="contact_vo"></table>-->
-        <!-- <table tableName="free_time_vo"></table>-->
+        <!-- <table tableName="freetime_vo"></table>-->
         <!-- <table tableName="staff_vo"></table>-->
 
         <!-- 有些表的字段需要指定java类型

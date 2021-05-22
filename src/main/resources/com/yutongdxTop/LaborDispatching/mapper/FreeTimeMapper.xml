@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yutongdxTop.LaborDispatching.mapper.FreeTimeMapper">
+  <resultMap id="BaseResultMap" type="com.yutongdxTop.LaborDispatching.domain.pojo.FreeTime">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="staff_id" jdbcType="INTEGER" property="staffId" />
+    <result column="time_begin" jdbcType="VARCHAR" property="timeBegin" />
+    <result column="time_end" jdbcType="VARCHAR" property="timeEnd" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, staff_id, time_begin, time_end
+  </sql>
+  <select id="selectByExample" parameterType="com.yutongdxTop.LaborDispatching.domain.pojo.FreeTimeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from free_time
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from free_time
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from free_time
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yutongdxTop.LaborDispatching.domain.pojo.FreeTimeExample">
+    delete from free_time
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yutongdxTop.LaborDispatching.domain.pojo.FreeTime">
+    insert into free_time (id, staff_id, time_begin, 
+      time_end)
+    values (#{id,jdbcType=INTEGER}, #{staffId,jdbcType=INTEGER}, #{timeBegin,jdbcType=VARCHAR}, 
+      #{timeEnd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yutongdxTop.LaborDispatching.domain.pojo.FreeTime">
+    insert into free_time
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="staffId != null">
+        staff_id,
+      </if>
+      <if test="timeBegin != null">
+        time_begin,
+      </if>
+      <if test="timeEnd != null">
+        time_end,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="staffId != null">
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="timeBegin != null">
+        #{timeBegin,jdbcType=VARCHAR},
+      </if>
+      <if test="timeEnd != null">
+        #{timeEnd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yutongdxTop.LaborDispatching.domain.pojo.FreeTimeExample" resultType="java.lang.Long">
+    select count(*) from free_time
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update free_time
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.staffId != null">
+        staff_id = #{record.staffId,jdbcType=INTEGER},
+      </if>
+      <if test="record.timeBegin != null">
+        time_begin = #{record.timeBegin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timeEnd != null">
+        time_end = #{record.timeEnd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update free_time
+    set id = #{record.id,jdbcType=INTEGER},
+      staff_id = #{record.staffId,jdbcType=INTEGER},
+      time_begin = #{record.timeBegin,jdbcType=VARCHAR},
+      time_end = #{record.timeEnd,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yutongdxTop.LaborDispatching.domain.pojo.FreeTime">
+    update free_time
+    <set>
+      <if test="staffId != null">
+        staff_id = #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="timeBegin != null">
+        time_begin = #{timeBegin,jdbcType=VARCHAR},
+      </if>
+      <if test="timeEnd != null">
+        time_end = #{timeEnd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yutongdxTop.LaborDispatching.domain.pojo.FreeTime">
+    update free_time
+    set staff_id = #{staffId,jdbcType=INTEGER},
+      time_begin = #{timeBegin,jdbcType=VARCHAR},
+      time_end = #{timeEnd,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
