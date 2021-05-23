@@ -118,11 +118,14 @@
             datatype: 'json',//“xml”, “html”, “script”, “json”, “jsonp”, “text”.
             success: function (data) {
                 $.each(data.data, function (index, item) {
-                    $('#clientId').append('<option value="' + item.id + '">' + "编号:" + item.id + "  名称:" + item.name + '</option>');// 下拉菜单里添加元素
+                    $('#clientId').append('<option value="' + item.clientId + '">' + "编号:" + item.clientId + "  名称:" + item.name + '</option>');// 下拉菜单里添加元素
                 });
                 layui.form.render('select');
-            }, error: function () {
-                alert("查询客户失败！！！")
+            }, error: function (json) {
+                var jsonObj = JSON.stringify(json);    //将json对象转换为字符串
+                jsonObj = eval('(' + jsonObj + ')');  // 把JSON字符串解析为javascript对象
+                layer.alert(jsonObj.msg);
+
             }
         });
     });

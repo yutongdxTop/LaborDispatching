@@ -5,9 +5,9 @@ layui.use(['form','layer','table','laytpl'],function(){
         laytpl = layui.laytpl,
         table = layui.table;
     var clientId = -1;
-    var html = decodeURI(location.href.split('/')[6]);
-    if (html === "clientIndex.html") {  //若为客户界面则只展示客户发布的信息
-        clientId = decodeURI(location.href.split('?')[1].split('&')[1])
+    var html = decodeURI(parent.location.href.split('/')[6]);
+    if (html !== "client.html") {  //若上一级界面不是客户信息管理界面则只展示客户发布的信息
+        clientId = decodeURI(window.parent.document.URL.split('?')[1].split('&')[1])
     }
 
     //信息列表
@@ -67,6 +67,10 @@ layui.use(['form','layer','table','laytpl'],function(){
                     body.find(".status").val(edit.status);
                     body.find(".time").val(edit.time);
                     form.render();
+                } else {
+                    clientId = decodeURI(window.parent.document.URL.split('&')[1]);
+                    body.find(".clientId").append('<option value="' + clientId + '" selected>' + "客户编号:" + clientId + '</option>');
+                    body.find(".status").val("未接单");
                 }
                 setTimeout(function(){
                     layui.layer.tips('点击此处返回', '.layui-layer-setwin .layui-layer-close', {

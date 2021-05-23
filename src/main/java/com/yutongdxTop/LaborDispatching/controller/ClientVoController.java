@@ -20,6 +20,19 @@ public class ClientVoController {
     @Autowired
     private ClientVoService clientVoService;
 
+    @RequestMapping(value = "/getAllClientVos")
+    @ResponseBody
+    public JSONResult getAllCustomerVos() {
+        List<ClientVo> clientVos;
+        clientVos = clientVoService.getAllClientVos();
+        if (clientVos.isEmpty()) {
+            return JSONResult.errorMsg("还没有客户信息");
+        } else {
+            int count = clientVos.size();
+            return JSONResult.ok(count, clientVos);
+        }
+    }
+
     @RequestMapping("/getClientVoByUserName")
     @ResponseBody
     public JSONResult getClientVoByUserName(@RequestParam(value = "userName", required = true, defaultValue = "-1") String userName) {
