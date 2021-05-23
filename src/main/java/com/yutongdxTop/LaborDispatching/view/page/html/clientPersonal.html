@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户个人信息界面</title>
+    <link rel="stylesheet" href="../../resource/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/add.css">
+    <link rel="stylesheet" type="text/css" href="../css/public.css">
+</head>
+<body class="childrenBody">
+<div class="divForm addUserForm">
+    <form class="layui-form layui-form-pane personalForm" action="" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label">客户编号</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input id layui-disabled" name="id" lay-verify="required"
+                           placeholder="请输入客户编号" autocomplete="off" disabled>
+                    <div class="layui-form-mid layui-word-aux">（由系统生成）</div>
+                </label>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">客户名称</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input name" name="name" lay-verify="required"
+                           placeholder="请输入名称" autocomplete="off">
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系电话</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input telephone" name="telephone" lay-verify="number"
+                           placeholder="请输入联系电话" autocomplete="off">
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系地址</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input address" name="address" lay-verify="required"
+                           placeholder="请输入联系地址" autocomplete="off">
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="layui-form-item">
+            <label class="layui-form-label">类别</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input type" name="type" lay-verify="required"
+                           placeholder="请输入客户分类" autocomplete="off">
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input userName" name="userName" lay-verify="required"
+                           placeholder="请输入用户名" autocomplete="off">
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户密码</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input password" name="password" lay-verify="required"
+                           placeholder="请输入用户密码" autocomplete="off">
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="layui-form-item botton">
+            <div class="layui-input-inline">
+                <button type="submit" class="layui-btn" lay-submit="" lay-filter="set">提交</button>
+                <button type="cancel" class="layui-btn layui-btn-danger right">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="../../resource/layui/layui.js"></script>
+<script src="../js/address.js"></script>
+<script src="../js/clientPersonal.js"></script>
+</body>
+</html>

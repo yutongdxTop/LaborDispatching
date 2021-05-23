@@ -4,7 +4,9 @@ import com.yutongdxTop.LaborDispatching.domain.pojo.Client;
 import com.yutongdxTop.LaborDispatching.domain.pojo.ClientExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ClientMapper {
     long countByExample(ClientExample example);
 

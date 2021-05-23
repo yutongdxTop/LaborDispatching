@@ -4,7 +4,9 @@ import com.yutongdxTop.LaborDispatching.domain.pojo.FreeTime;
 import com.yutongdxTop.LaborDispatching.domain.pojo.FreeTimeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface FreeTimeMapper {
     long countByExample(FreeTimeExample example);
 

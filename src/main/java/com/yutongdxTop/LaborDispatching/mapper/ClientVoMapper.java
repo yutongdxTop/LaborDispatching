@@ -4,7 +4,9 @@ import com.yutongdxTop.LaborDispatching.domain.vo.ClientVo;
 import com.yutongdxTop.LaborDispatching.domain.vo.ClientVoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ClientVoMapper {
     long countByExample(ClientVoExample example);
 

@@ -4,7 +4,9 @@ import com.yutongdxTop.LaborDispatching.domain.vo.FreetimeVo;
 import com.yutongdxTop.LaborDispatching.domain.vo.FreetimeVoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface FreetimeVoMapper {
     long countByExample(FreetimeVoExample example);
 

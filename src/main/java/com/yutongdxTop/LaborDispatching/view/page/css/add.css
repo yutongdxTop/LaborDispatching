@@ -1,0 +1,63 @@
+html, body {
+    height: 100%;
+}
+
+h1{
+    color: black;
+}
+
+.content {
+    width: 400px;
+    height: 150px;
+    position: fixed;
+    top: 50%;
+    left: 20%;
+    right: 0;
+    margin: 0 auto;
+}
+
+.divForm {
+    position: relative;
+    width: 400px;
+    height: 200px;
+
+    border: 1px;
+    text-align: center;
+    top: 45%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -150px;
+}
+
+.botton{
+    position: absolute;
+    left: 40%;
+    transform: translateX(-50%);
+}
+.layui-btn.right{margin-left: 30px;}
+
+.addUserForm{
+    position: relative;
+    width: 400px;
+    height: 200px;
+
+    border: 1px;
+    text-align: center;
+    top: 38%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -150px;
+}
+
+.addProjectForm{
+    position: relative;
+    width: 600px;
+    height: 200px;
+
+    border: 1px;
+    text-align: center;
+    top: 35%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -150px;
+}

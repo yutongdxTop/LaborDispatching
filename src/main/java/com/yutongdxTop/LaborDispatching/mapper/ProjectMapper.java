@@ -4,7 +4,9 @@ import com.yutongdxTop.LaborDispatching.domain.pojo.Project;
 import com.yutongdxTop.LaborDispatching.domain.pojo.ProjectExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ProjectMapper {
     long countByExample(ProjectExample example);
 

@@ -4,7 +4,9 @@ import com.yutongdxTop.LaborDispatching.domain.pojo.Contact;
 import com.yutongdxTop.LaborDispatching.domain.pojo.ContactExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ContactMapper {
     long countByExample(ContactExample example);
 

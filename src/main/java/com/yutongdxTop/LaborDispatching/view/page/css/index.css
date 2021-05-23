@@ -1,0 +1,98 @@
+html, body {
+	background-color: #192540;
+	height: 100%;
+}
+
+h1{
+	color: #FFFFFF;
+}
+
+.content {
+	width: 400px;
+	height: 150px;
+	position: fixed;
+	top: 50%;
+	left: 20%;
+	right: 0;
+	margin: 0 auto;
+}
+
+/*公共样式*/
+.layui-layout-admin .layui-header{background-color:#192540}
+.header .layui-nav-child{ z-index:99999; top:60px; left: auto; right: 0;}
+.seraph{ font-size:16px !important;}
+.main_body{ min-width:320px; }
+.layui-nav .layui-nav-item a{ cursor:pointer;}
+.layui-nav .layui-nav-item>a{ color:rgba(255,255,255,1); max-height:60px;}
+.layui-layer-tab .layui-layer-title span{ padding:0 !important;}
+iframe{ position:absolute; height:100%; width:100%; border:none;}
+
+.layui-nav .layui-nav-child a:hover,.layui-nav .layui-nav-child dd.layui-this a:hover{background-color:#5FB878;color:#fff;}
+
+/*样式改变的过渡*/
+.layui-body,.layui-footer,.layui-layout-admin .layui-side,.logo,.topLevelMenus li.layui-nav-item,.topLevelMenus li.layui-nav-item:hover{ transition: all 0.3s ease-in-out;-webkit-transition: all 0.3s ease-in-out;-o-transition: all 0.3s ease-in-out;-moz-transition: all 0.3s ease-in-out;-ms-transition: all 0.3s ease-in-out; }
+
+/*左侧导航*/
+.layui-nav{background-color: inherit !important;}
+.showMenu.layui-layout-admin .layui-side{ left:-200px; }
+.showMenu .layui-body,.showMenu .layui-footer{ left:0; }
+
+/*左侧导航重定义*/
+.layui-nav-item.layui-nav-itemed{ background-color:#2B2E37 !important;}
+.layui-nav-itemed:before{ width:5px; height:100%; background-color:#009688; position:absolute; content:''; left:0; top:0;}
+.layui-nav-itemed .layui-nav-child a{ padding-left:40px;}
+
+/*layui-body*/
+.layui-body{overflow:hidden; border-top:2px solid #1AA094;border-bottom:2px solid #1aa094;  border-left:2px solid #393d49; background:#fff;}
+#top_tabs_box{ padding-right:138px; height:40px; border-bottom:1px solid #e2e2e2; }
+#top_tabs{ position: absolute; border-bottom:none;}
+.layui-tab-title .layui-this{ background-color:#1AA094; color:#fff; }
+.layui-tab-title .layui-this:after{ border:none; }
+.layui-tab-title li cite{ font-style: normal; padding-left:5px; }
+.clildFrame.layui-tab-content{ top:0; position:absolute; bottom:0; width:100%; padding:0;}
+
+/*橙色*/
+.orange .layui-layout-admin .layui-header{ background-color:orange !important; }
+.orange .layui-bg-black{ background-color:#e47214 !important; }
+/*蓝色*/
+.blue .layui-layout-admin .layui-header{ background-color:#3396d8 !important; }
+.blue .layui-bg-black,.blue .hideMenu{ background-color:#146aa2 !important; }
+/*自定义*/
+.skinCustom{ visibility:hidden; }
+.skinCustom input{ width:48%; margin:5px 2% 5px 0; float:left; }
+.orange .layui-nav-tree .layui-nav-child a,.blue .layui-nav-tree .layui-nav-child a{ color:#fff; }
+.orange .top_menu.layui-nav .layui-nav-more,.blue .top_menu.layui-nav .layui-nav-more{border-color:#fff transparent transparent !important;}
+.orange .top_menu.layui-nav-itemed .layui-nav-more,.orange .top_menu.layui-nav .layui-nav-mored,.blue .top_menu.layui-nav-itemed .layui-nav-more,.blue .top_menu.layui-nav .layui-nav-mored{border-color:transparent transparent #fff !important;}
+/*底部*/
+.footer{text-align: center; line-height:44px; border-left: 2px ; z-index:999;}
+
+/*响应式样式*/
+@media screen and (max-width:1080px){
+	.mobileTopLevelMenus[mobile]{display:inline-block;}
+	.site-mobile .site-tree-mobile,.topLevelMenus[pc]{display:none !important;}
+}
+@media screen and (max-width: 720px){
+	.hideMenu{ display: none !important; }
+	.mobileTopLevelMenus[mobile]{ padding:0;}
+	.top_menu>li[pc]{ display: none !important; }
+	/*左侧导航*/
+	.layui-layout-admin .layui-side{ left:-260px; }
+	.site-mobile .layui-side{ left: 0; z-index:1100; }
+	.site-tree-mobile {display: block!important; position: fixed; z-index: 100000; bottom: 15px; left: 15px; width:40px; height:40px; line-height:40px; border-radius: 2px; text-align: center; background-color: rgba(0,0,0,.7); color: #fff;}
+	.site-mobile .site-mobile-shade { content: ''; position: fixed; top: 0; bottom: 0; left: 0; right: 0; background-color: rgba(0,0,0,.8); z-index: 999;}
+	.layui-body,.layui-layout-admin .layui-footer{ left:-2px; }
+}
+@media screen and (max-width:480px){
+	.logo{ width:120px; font-size: 18px;}
+	#userInfo>a{ padding:0 10px;}
+	.mobileTopLevelMenus[mobile] li>a{ padding:0 17px 0 15px;}
+	.logo,.layui-nav.top_menu{ padding:0 5px;}
+	.adminName,.top_menu dd[pc]{ display: none !important; }
+	*[mobile],.top_menu .layui-nav-item.showNotice[pc]{ display:inline-block !important; }
+}
+
+/*修改顶部高度*/
+.header .layui-nav-child,.layui-body,.layui-layout-admin .layui-side,.header .layui-nav-bar{ top:50px !important;}
+.header .layui-nav .layui-nav-item,.header .layui-nav .layui-nav-item>a,.header,.logo{ line-height:50px !important; max-height:50px; !important;}
+.mobileTopLevelMenus{ float:left;}
+.hideMenu{ margin-top: 10px;}

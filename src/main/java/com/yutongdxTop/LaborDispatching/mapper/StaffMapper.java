@@ -4,7 +4,9 @@ import com.yutongdxTop.LaborDispatching.domain.pojo.Staff;
 import com.yutongdxTop.LaborDispatching.domain.pojo.StaffExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface StaffMapper {
     long countByExample(StaffExample example);
 

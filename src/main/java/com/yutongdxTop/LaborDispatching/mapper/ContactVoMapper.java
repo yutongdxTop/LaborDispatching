@@ -4,7 +4,9 @@ import com.yutongdxTop.LaborDispatching.domain.vo.ContactVo;
 import com.yutongdxTop.LaborDispatching.domain.vo.ContactVoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ContactVoMapper {
     long countByExample(ContactVoExample example);
 

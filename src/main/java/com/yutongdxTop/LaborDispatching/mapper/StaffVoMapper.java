@@ -4,7 +4,9 @@ import com.yutongdxTop.LaborDispatching.domain.vo.StaffVo;
 import com.yutongdxTop.LaborDispatching.domain.vo.StaffVoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface StaffVoMapper {
     long countByExample(StaffVoExample example);
 
