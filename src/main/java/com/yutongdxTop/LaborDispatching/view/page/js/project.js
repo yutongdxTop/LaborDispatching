@@ -27,7 +27,6 @@ layui.use(['form','layer','table','laytpl'],function(){
             ,type: 'asc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
         },
         cols : [[
-            {type: "checkbox", fixed:"left", width:50},
             {field: 'id', title: '项目编号',minWidth:170, align:"center", sort:true},
             {field: 'type', title: '项目类型', align:'center'},
             {field: 'description', title: '项目描述', minWidth:100, align:'center'},
@@ -88,30 +87,6 @@ layui.use(['form','layer','table','laytpl'],function(){
         addProject();
     });
 
-    //批量删除
-    $(".delAll_btn").click(function(){
-        var checkStatus = table.checkStatus('projectTable'),
-            data = checkStatus.data;
-        if(data.length > 0) {
-
-            layer.confirm('确定删除选中的信息？', {icon: 3, title: '提示信息'}, function (index, layero) {
-                for (var i in data) {
-                    $.post(address + "LaborDispatching/project/deleteProject",{
-                        id : data[i].id
-                    });
-                }
-                setTimeout(function(){
-                    layer.msg("删除成功！");
-                    tableIns.reload();
-                    layer.close(index);
-                },1500)
-
-            });
-        }else{
-            layer.msg("请选择需要删除的信息");
-        }
-    });
-
     //列表操作
     table.on('tool(project)', function(obj){
         var layEvent = obj.event,
@@ -123,8 +98,10 @@ layui.use(['form','layer','table','laytpl'],function(){
             layer.confirm('确定删除此信息？',{icon:3, title:'提示信息'},function(index){
                 $.post(address + "LaborDispatching/project/deleteProject",{
                     id : data.id
-                },function(){
-                    layer.msg("删除成功！");
+                },function(json){
+                    var jsonObj = JSON.stringify(json);    //将json对象转换为字符串
+                    jsonObj = eval('(' + jsonObj + ')');  // 把JSON字符串解析为javascript对象
+                    layer.alert(jsonObj.msg);
                     tableIns.reload();
                     layer.close(index);
                 });
