@@ -35,9 +35,9 @@ public class ProjectDomain implements ProjectService {
         ProjectExample projectExample = new ProjectExample();
         ProjectExample.Criteria criteria = projectExample.createCriteria();
         if (clientId == -1) {  //管理员查询所有项目
-            criteria.andIdIsNotNull().andTypeLike(type);
+            criteria.andIdIsNotNull().andTypeLike("%" + type + "%");
         } else {  //客户查询自己发布的项目
-            criteria.andClientIdEqualTo(clientId).andTypeLike(type);
+            criteria.andClientIdEqualTo(clientId).andTypeLike("%" + type + "%");
         }
         return projectMapper.selectByExample(projectExample);
     }

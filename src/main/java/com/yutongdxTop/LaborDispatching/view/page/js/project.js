@@ -28,13 +28,13 @@ layui.use(['form','layer','table','laytpl'],function(){
         },
         cols : [[
             {type: "checkbox", fixed:"left", width:50},
-            {field: 'id', title: '项目编号',minWidth:170, align:"center"},
+            {field: 'id', title: '项目编号',minWidth:170, align:"center", sort:true},
             {field: 'type', title: '项目类型', align:'center'},
             {field: 'description', title: '项目描述', minWidth:100, align:'center'},
             {field: 'clientId', title: '客户编号', align:'center'},
             {field: 'beginTime', title: '项目开始时间', minWidth:170, align:'center'},
             {field: 'endTime', title: '项目结束时间', minWidth:170, align:"center"},
-            {field: 'status', title: '项目接单员工编号', minWidth:170, align:"center"},
+            {field: 'status', title: '项目接单员工编号', minWidth:170, align:"center", sort:true},
             {field: 'time', title: '项目发布时间', minWidth:170, align:"center"},
             {title: '操作', minWidth:175, templet:'#projectBar',fixed:"right",align:"center"}
         ]]
