@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加联系方式</title>
+    <link rel="stylesheet" href="../../resource/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/add.css">
+    <link rel="stylesheet" type="text/css" href="../css/public.css">
+</head>
+<body class="childrenBody">
+<div class="divForm">
+    <form class="layui-form layui-form-pane" action="" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 29%">联系方式编号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input id layui-disabled" name="id"
+                       placeholder="请输入联系方式编号" autocomplete="off" disabled>
+                <div class="layui-form-mid layui-word-aux">（由系统生成）</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 29%">联系方式</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input contactDetails" name="contactDetails" lay-verify="required"
+                       placeholder="请输入联系方式" autocomplete="off">
+                <div class="layui-form-mid layui-word-aux">（如电话、邮箱、地址等）</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 29%">联系方式的值</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input contactValue" name="contactValue" lay-verify="required"
+                       placeholder="请输入联系方式的值" autocomplete="off">
+            </div>
+        </div>
+        <br>
+        <div class="layui-form-item botton">
+            <div class="layui-input-inline">
+                <button type="submit" class="layui-btn" lay-submit="" lay-filter="set">提交</button>
+                <button type="reset" class="layui-btn right">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="../../resource/layui/layui.js"></script>
+<script src="../js/address.js"></script>
+<script>
+
+    //监听表格提交
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer,
+            $ = layui.jquery;
+        var staffId = decodeURI(window.top.location.href.split('&')[1]);
+
+        form.on('submit(set)', function (data) {
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            }, function (index, layero) {
+                $.post(address + "LaborDispatching/freelancer/addContact",{
+                    id : data.field.id,
+                    staffId : staffId,
+                    contactDetails : data.field.contactDetails,
+                    contactValue : data.field.contactValue
+                },function(json){
+                    var jsonObj = JSON.stringify(json);    //将json对象转换为字符串
+                    jsonObj = eval('(' + jsonObj + ')');  // 把JSON字符串解析为javascript对象
+                    layer.alert(jsonObj.msg);
+                });
+                setTimeout(function(){
+                    layer.close(index);
+                    layer.closeAll("iframe");
+                    parent.location.reload();
+                },1000)
+            });
+            return false;
+        });
+
+    });
+</script>
+</body>
+</html>

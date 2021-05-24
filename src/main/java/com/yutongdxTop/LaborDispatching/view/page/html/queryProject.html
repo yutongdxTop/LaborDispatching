@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>项目信息查看</title>
+    <link rel="stylesheet" href="../../resource/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/public.css">
+</head>
+<body class="childrenBody">
+<form class="layui-form">
+    <blockquote class="layui-elem-quote quoteBox">
+        <div class="layui-inline">
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input searchVal" id="inputReload" placeholder="请输入搜索的项目类型" />
+            </div>
+            <a class="layui-btn search_btn" data-type="reload">搜索</a>
+        </div>
+    </blockquote>
+    <table id="project" lay-filter="project"></table>
+</form>
+
+<script src="../../resource/layui/layui.js"></script>
+<script src="../js/address.js"></script>
+<script>
+    layui.use(['form','layer','table'],function(){
+        var $ = layui.jquery,
+            table = layui.table;
+        var staffId = -1;
+
+        //信息列表
+        table.render({
+            elem: '#project',
+            url : projectUrl,
+            where: {id :staffId, type : "id"}, //如果无需传递额外参数，可不加该参数
+            method: 'post', //如果无需自定义HTTP类型，可不加该参数
+            cellMinWidth : 95,
+            page : false,
+            height : "full-125",
+            limits : [10,15,20,25],
+            limit : 20,
+            id : "projectTable",
+            initSort: {
+                field: 'status' //排序字段，对应 cols 设定的各字段名
+                ,type: 'asc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
+            },
+            cols : [[
+                {field: 'id', title: '项目编号',minWidth:170, align:"center", sort:true},
+                {field: 'type', title: '项目类型', align:'center'},
+                {field: 'description', title: '项目描述', minWidth:100, align:'center'},
+                {field: 'clientId', title: '客户编号', align:'center'},
+                {field: 'beginTime', title: '项目开始时间', minWidth:170, align:'center'},
+                {field: 'endTime', title: '项目结束时间', minWidth:170, align:"center"},
+                {field: 'status', title: '项目接单员工编号', minWidth:170, align:"center", sort:true},
+                {field: 'time', title: '项目发布时间', minWidth:170, align:"center"}
+            ]]
+        });
+
+        //搜索功能
+        $(".search_btn").on("click",function(){
+            table.reload("projectTable",{
+                where: {
+                    id : -1,
+                    type : $(".searchVal").val()  //搜索的关键字
+                }
+            })
+        });
+
+    });
+</script>
+</body>
+</html>
