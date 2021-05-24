@@ -154,7 +154,7 @@ public class ClientDomain implements ClientVoService {
             user = userMapper.selectByPrimaryKey(clientVo.getUserName());
 
             if (clients.isEmpty() && user == null) {    //结果为空说明不存在客户主体和相同用户名，可以添加
-                String clientId = GetTime.getDateTime() + GetRandom.getRandom(0, 99);
+                String clientId ="c" + GetTime.getDateTime() + GetRandom.getRandom(0, 99);
                 client = new Client();
                 client.setId(clientId);
                 client.setName(clientVo.getName());

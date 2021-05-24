@@ -18,7 +18,7 @@ h1{
 
 .divForm {
     position: relative;
-    width: 400px;
+    width: 600px;
     height: 200px;
 
     border: 1px;
@@ -36,7 +36,7 @@ h1{
 }
 .layui-btn.right{margin-left: 30px;}
 
-.addUserForm{
+.addClientForm{
     position: relative;
     width: 400px;
     height: 200px;
@@ -44,6 +44,19 @@ h1{
     border: 1px;
     text-align: center;
     top: 38%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -150px;
+}
+
+.addStaffForm{
+    position: relative;
+    width: 400px;
+    height: 200px;
+
+    border: 1px;
+    text-align: center;
+    top: 32%;
     left: 50%;
     margin-top: -200px;
     margin-left: -150px;

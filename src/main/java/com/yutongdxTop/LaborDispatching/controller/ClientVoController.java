@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -22,7 +21,7 @@ public class ClientVoController {
 
     @RequestMapping(value = "/getAllClientVos")
     @ResponseBody
-    public JSONResult getAllCustomerVos() {
+    public JSONResult getAllClientVos() {
         List<ClientVo> clientVos;
         clientVos = clientVoService.getAllClientVos();
         if (clientVos.isEmpty()) {

@@ -1,13 +1,20 @@
 package com.yutongdxTop.LaborDispatching.util;
 
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class GetTime {
-    public static String getTime() {
+
+    public static String getDateTime() {
         long currentTime = System.currentTimeMillis();
         SimpleDateFormat formatter = new SimpleDateFormat("yyMMddHHmmss");//设置日期格式
+        Date date = new Date(currentTime);
+        return formatter.format(date);
+    }
+
+    public static String getTime() {
+        long currentTime = System.currentTimeMillis();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyMMddHHmm");//设置日期格式
         Date date = new Date(currentTime);
         return formatter.format(date);
     }
@@ -18,4 +25,5 @@ public class GetTime {
         Date date = new Date(currentTime);
         return dateFormat.format(date);
     }
+
 }

@@ -2,7 +2,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
     var form = layui.form,
         layer = layui.layer,
         $ = layui.jquery;
-    var url = window.parent.document.URL;
+    var url = window.top.location.href;
     var userName, id;
     var html = decodeURI(parent.location.href.split('/')[6]);
 
