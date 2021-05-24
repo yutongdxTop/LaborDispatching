@@ -24,17 +24,6 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             $(".password").val(jsonObj.data.password);
             form.render();
         });
-    } else {  //管理员更改客户信息
-        url = address + "LaborDispatching/clientVo/getClientVoByUserName";
-        userName = decodeURI(location.href.split('?')[1].split('&')[0]);
-
-        $.post(url,{
-            userName : userName
-        },function(json){
-            var jsonObj = JSON.stringify(json);    //将json对象转换为字符串
-            jsonObj = eval('(' + jsonObj + ')');  // 把JSON字符串解析为javascript对象
-            id = jsonObj.data.clientId;
-        });
     }
 
     //监听提交
@@ -54,7 +43,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                 var jsonObj = JSON.stringify(json);    //将json对象转换为字符串
                 jsonObj = eval('(' + jsonObj + ')');  // 把JSON字符串解析为javascript对象
                 layer.msg(jsonObj.msg);
-                if (jsonObj.msg !== "修改失败，用户名已存在!") {
+                if (jsonObj.msg === "修改成功!") {
                     setTimeout(function(){
                         parent.location.search = "?" + data.field.userName + "&" + id + "&";
                     },1000);

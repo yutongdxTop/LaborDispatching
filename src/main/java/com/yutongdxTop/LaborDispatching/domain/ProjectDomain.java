@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ProjectDomain implements ProjectService {
@@ -58,7 +59,7 @@ public class ProjectDomain implements ProjectService {
         try{
             int i = 0;
             Project project = projectMapper.selectByPrimaryKey(projectId);
-            if (project.getStatus().equals("未接单")) {
+            if (Objects.equals(project.getStatus(), "未接单")) {
                 i = projectMapper.deleteByPrimaryKey(projectId);
             }
             if (i==0){

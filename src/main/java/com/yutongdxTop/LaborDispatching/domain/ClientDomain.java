@@ -3,6 +3,7 @@ package com.yutongdxTop.LaborDispatching.domain;
 import com.yutongdxTop.LaborDispatching.domain.pojo.Client;
 import com.yutongdxTop.LaborDispatching.domain.pojo.ClientExample;
 import com.yutongdxTop.LaborDispatching.domain.pojo.User;
+import com.yutongdxTop.LaborDispatching.domain.pojo.UserExample;
 import com.yutongdxTop.LaborDispatching.domain.vo.ClientVo;
 import com.yutongdxTop.LaborDispatching.domain.vo.ClientVoExample;
 import com.yutongdxTop.LaborDispatching.mapper.ClientMapper;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ClientDomain implements ClientVoService {
@@ -81,13 +83,41 @@ public class ClientDomain implements ClientVoService {
     @Override
     public String updateClientVo(ClientVo clientVo) {
         try {
-            User user = new User();         //更新user
-            user.setClientId(clientVo.getClientId());
-            user.setName(clientVo.getUserName());
-            user.setPassword(clientVo.getPassword());
-            user.setStaffId(null);
+            int i;
 
-            int i = userMapper.updateByPrimaryKey(user);
+            System.out.println(clientVo.getUserName());
+            User user = userMapper.selectByPrimaryKey(clientVo.getUserName());  //找出表单用户名对应的用户
+
+            ClientVoExample clientVoExample = new ClientVoExample();  //找出数据库中原客户主体
+            ClientVoExample.Criteria clientId = clientVoExample.createCriteria();
+            clientId.andClientIdEqualTo(clientVo.getClientId());
+            List<ClientVo> clientVos = clientVoMapper.selectByExample(clientVoExample);
+
+            //如果表单原客户用户名和表单的用户名不同，但用户名在数据库中存在，则为修改的用户名已被注册
+            if ( user != null && !Objects.equals(clientVos.get(0).getUserName(), clientVo.getUserName())) {
+                return "修改失败，用户名已存在!";
+            } else if (user == null) {  //如果用户名不存在，则修改用户名
+                UserExample userExample = new UserExample();      //删除旧账号
+                UserExample.Criteria criteria = userExample.createCriteria();
+                criteria.andClientIdEqualTo(clientVo.getClientId());
+                List<User> users = userMapper.selectByExample(userExample);
+                userMapper.deleteByPrimaryKey(users.get(0).getName());
+
+                user = new User();   //用新的用户名注册账号
+                user.setName(clientVo.getUserName());
+                user.setClientId(clientVo.getClientId());
+                user.setPassword(clientVo.getPassword());
+                user.setStaffId(null);
+
+                i = userMapper.insert(user);
+            } else {   //如果用户名存在且与原客户用户名相同，则用户名未修改，可直接更新
+                user.setName(clientVo.getUserName());
+                user.setClientId(clientVo.getClientId());
+                user.setPassword(clientVo.getPassword());
+                user.setStaffId(null);
+
+                i = userMapper.updateByPrimaryKey(user);
+            }
 
             Client client = new Client();  //更新Client
             client.setId(clientVo.getClientId());
