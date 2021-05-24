@@ -1,6 +1,8 @@
 package com.yutongdxTop.LaborDispatching.domain.vo;
 
 public class FreetimeVo {
+    private String id;
+
     private String staffId;
 
     private String name;
@@ -14,6 +16,14 @@ public class FreetimeVo {
     private String freeTimeBegin;
 
     private String freeTimeEnd;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
 
     public String getStaffId() {
         return staffId;

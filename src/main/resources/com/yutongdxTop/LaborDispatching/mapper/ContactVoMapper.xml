@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yutongdxTop.LaborDispatching.mapper.ContactVoMapper">
   <resultMap id="BaseResultMap" type="com.yutongdxTop.LaborDispatching.domain.vo.ContactVo">
+    <result column="id" jdbcType="VARCHAR" property="id" />
     <result column="staff_id" jdbcType="VARCHAR" property="staffId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="sex" jdbcType="VARCHAR" property="sex" />
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    staff_id, name, sex, identity, contact_details, contact_value
+    id, staff_id, name, sex, identity, contact_details, contact_value
   </sql>
   <select id="selectByExample" parameterType="com.yutongdxTop.LaborDispatching.domain.vo.ContactVoExample" resultMap="BaseResultMap">
     select
@@ -91,16 +92,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.yutongdxTop.LaborDispatching.domain.vo.ContactVo">
-    insert into contact_vo (staff_id, name, sex, 
-      identity, contact_details, contact_value
-      )
-    values (#{staffId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
-      #{identity,jdbcType=VARCHAR}, #{contactDetails,jdbcType=VARCHAR}, #{contactValue,jdbcType=VARCHAR}
-      )
+    insert into contact_vo (id, staff_id, name, 
+      sex, identity, contact_details, 
+      contact_value)
+    values (#{id,jdbcType=VARCHAR}, #{staffId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR}, #{contactDetails,jdbcType=VARCHAR}, 
+      #{contactValue,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yutongdxTop.LaborDispatching.domain.vo.ContactVo">
     insert into contact_vo
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
       <if test="staffId != null">
         staff_id,
       </if>
@@ -121,6 +125,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
       <if test="staffId != null">
         #{staffId,jdbcType=VARCHAR},
       </if>
@@ -150,6 +157,9 @@
   <update id="updateByExampleSelective" parameterType="map">
     update contact_vo
     <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
       <if test="record.staffId != null">
         staff_id = #{record.staffId,jdbcType=VARCHAR},
       </if>
@@ -175,7 +185,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update contact_vo
-    set staff_id = #{record.staffId,jdbcType=VARCHAR},
+    set id = #{record.id,jdbcType=VARCHAR},
+      staff_id = #{record.staffId,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=VARCHAR},
       identity = #{record.identity,jdbcType=VARCHAR},
