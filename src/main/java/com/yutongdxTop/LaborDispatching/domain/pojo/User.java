@@ -5,9 +5,9 @@ public class User {
 
     private String password;
 
-    private Integer clientId;
+    private String clientId;
 
-    private Integer staffId;
+    private String staffId;
 
     public String getName() {
         return name;
@@ -25,19 +25,19 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getClientId() {
+    public String getClientId() {
         return clientId;
     }
 
-    public void setClientId(Integer clientId) {
-        this.clientId = clientId;
+    public void setClientId(String clientId) {
+        this.clientId = clientId == null ? null : clientId.trim();
     }
 
-    public Integer getStaffId() {
+    public String getStaffId() {
         return staffId;
     }
 
-    public void setStaffId(Integer staffId) {
-        this.staffId = staffId;
+    public void setStaffId(String staffId) {
+        this.staffId = staffId == null ? null : staffId.trim();
     }
 }

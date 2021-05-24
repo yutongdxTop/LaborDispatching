@@ -7,7 +7,7 @@ public class Project {
 
     private String description;
 
-    private Integer clientId;
+    private String clientId;
 
     private String beginTime;
 
@@ -41,12 +41,12 @@ public class Project {
         this.description = description == null ? null : description.trim();
     }
 
-    public Integer getClientId() {
+    public String getClientId() {
         return clientId;
     }
 
-    public void setClientId(Integer clientId) {
-        this.clientId = clientId;
+    public void setClientId(String clientId) {
+        this.clientId = clientId == null ? null : clientId.trim();
     }
 
     public String getBeginTime() {

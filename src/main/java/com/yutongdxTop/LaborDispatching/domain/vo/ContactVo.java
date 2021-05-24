@@ -1,7 +1,7 @@
 package com.yutongdxTop.LaborDispatching.domain.vo;
 
 public class ContactVo {
-    private Integer staffId;
+    private String staffId;
 
     private String name;
 
@@ -13,12 +13,12 @@ public class ContactVo {
 
     private String contactValue;
 
-    public Integer getStaffId() {
+    public String getStaffId() {
         return staffId;
     }
 
-    public void setStaffId(Integer staffId) {
-        this.staffId = staffId;
+    public void setStaffId(String staffId) {
+        this.staffId = staffId == null ? null : staffId.trim();
     }
 
     public String getName() {

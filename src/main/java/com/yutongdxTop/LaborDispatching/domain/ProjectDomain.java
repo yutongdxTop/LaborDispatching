@@ -20,10 +20,10 @@ public class ProjectDomain implements ProjectService {
     ProjectMapper projectMapper;
 
     @Override
-    public List<Project> getAllProjects(int clientId) {
+    public List<Project> getAllProjects(String clientId) {
         ProjectExample projectExample = new ProjectExample();
         ProjectExample.Criteria criteria = projectExample.createCriteria();
-        if (clientId == -1) {  //管理员查询所有项目
+        if (clientId.equals("-1")) {  //管理员查询所有项目
             criteria.andIdIsNotNull();
         } else {  //客户查询自己发布的项目
             criteria.andClientIdEqualTo(clientId);
@@ -32,10 +32,10 @@ public class ProjectDomain implements ProjectService {
     }
 
     @Override
-    public List<Project> getProjectByTypeLike(int clientId, String type) {
+    public List<Project> getProjectByTypeLike(String clientId, String type) {
         ProjectExample projectExample = new ProjectExample();
         ProjectExample.Criteria criteria = projectExample.createCriteria();
-        if (clientId == -1) {  //管理员查询所有项目
+        if (clientId.equals("-1")) {  //管理员查询所有项目
             criteria.andIdIsNotNull().andTypeLike("%" + type + "%");
         } else {  //客户查询自己发布的项目
             criteria.andClientIdEqualTo(clientId).andTypeLike("%" + type + "%");
@@ -48,7 +48,7 @@ public class ProjectDomain implements ProjectService {
         int i = projectMapper.updateByPrimaryKeySelective(project);
         System.out.println("updateProject返回:"+i);
         if (i==0){
-            return "修改失败，项目不存在";
+            return "修改失败，项目信息没有修改";
         }else{
             return "修改成功";
         }
@@ -63,7 +63,7 @@ public class ProjectDomain implements ProjectService {
                 i = projectMapper.deleteByPrimaryKey(projectId);
             }
             if (i==0){
-                return "删除失败，项目不存在或已接单";
+                return "删除失败，项目已接单";
             }else{
                 return "删除成功";
             }
@@ -82,12 +82,12 @@ public class ProjectDomain implements ProjectService {
                 int i = projectMapper.updateByPrimaryKeySelective(project);
                 System.out.println("updateProject返回：" + i);
                 if (i == 0) {
-                    return "更新失败";
+                    return "更新失败，项目信息没有修改";
                 } else {
                     return "更新成功";
                 }
             } else {  //否则为添加项目信息
-                project.setId("p" + GetTime.getTime() + GetRandom.getRandom(0, 99));
+                project.setId("p" + GetTime.getDateTime() + GetRandom.getRandom(0, 99));
                 project.setTime(GetTime.getDate());
                 int i = projectMapper.insert(project);
                 System.out.println("addProject返回：" + i);

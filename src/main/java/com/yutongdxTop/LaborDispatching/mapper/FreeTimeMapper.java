@@ -12,7 +12,7 @@ public interface FreeTimeMapper {
 
     int deleteByExample(FreeTimeExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(FreeTime record);
 
@@ -20,7 +20,7 @@ public interface FreeTimeMapper {
 
     List<FreeTime> selectByExample(FreeTimeExample example);
 
-    FreeTime selectByPrimaryKey(Integer id);
+    FreeTime selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") FreeTime record, @Param("example") FreeTimeExample example);
 

@@ -12,7 +12,7 @@ public interface StaffMapper {
 
     int deleteByExample(StaffExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(Staff record);
 
@@ -20,7 +20,7 @@ public interface StaffMapper {
 
     List<Staff> selectByExample(StaffExample example);
 
-    Staff selectByPrimaryKey(Integer id);
+    Staff selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") Staff record, @Param("example") StaffExample example);
 

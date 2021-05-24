@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface ProjectService {
 
-    List<Project> getAllProjects(int clientId);
+    List<Project> getAllProjects(String clientId);
 
-    List<Project> getProjectByTypeLike(int clientId, String type);
+    List<Project> getProjectByTypeLike(String clientId, String type);
 
     String addProject(@Param("project") Project project);
 

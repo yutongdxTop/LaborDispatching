@@ -1,7 +1,7 @@
 package com.yutongdxTop.LaborDispatching.domain.vo;
 
 public class ClientVo {
-    private Integer clientId;
+    private String clientId;
 
     private String userName;
 
@@ -15,12 +15,12 @@ public class ClientVo {
 
     private String type;
 
-    public Integer getClientId() {
+    public String getClientId() {
         return clientId;
     }
 
-    public void setClientId(Integer clientId) {
-        this.clientId = clientId;
+    public void setClientId(String clientId) {
+        this.clientId = clientId == null ? null : clientId.trim();
     }
 
     public String getUserName() {

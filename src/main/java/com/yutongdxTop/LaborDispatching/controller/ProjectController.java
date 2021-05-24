@@ -21,7 +21,7 @@ public class ProjectController {
 
     @RequestMapping(value = "/getAllProjects")
     @ResponseBody
-    public JSONResult getAllProjects(@RequestParam(value = "id", defaultValue = "-1") int clientId, @RequestParam(value = "type",  defaultValue = "id") String type) {
+    public JSONResult getAllProjects(@RequestParam(value = "id", defaultValue = "-1") String clientId, @RequestParam(value = "type",  defaultValue = "id") String type) {
         List<Project> projects;
         if (type.equals("id")) {
             projects = projectService.getAllProjects(clientId);  //获取所有项目信息

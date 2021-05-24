@@ -67,8 +67,8 @@ public class ClientDomain implements ClientVoService {
     public String deleteClientVo(String userName) {
         try{
             User user = userMapper.selectByPrimaryKey(userName);
-            int i = clientMapper.deleteByPrimaryKey(user.getClientId());
-            i =  i + userMapper.deleteByPrimaryKey(userName);
+            int i = userMapper.deleteByPrimaryKey(userName);
+            i =  i + clientMapper.deleteByPrimaryKey(user.getClientId());
             if (i==0){
                 return "删除失败，用户不存在";
             }else{
@@ -154,7 +154,7 @@ public class ClientDomain implements ClientVoService {
             user = userMapper.selectByPrimaryKey(clientVo.getUserName());
 
             if (clients.isEmpty() && user == null) {    //结果为空说明不存在客户主体和相同用户名，可以添加
-                int clientId = Integer.parseInt(GetTime.getTime() + GetRandom.getRandom(0, 99));
+                String clientId = GetTime.getDateTime() + GetRandom.getRandom(0, 99);
                 client = new Client();
                 client.setId(clientId);
                 client.setName(clientVo.getName());

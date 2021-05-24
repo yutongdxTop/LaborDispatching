@@ -114,52 +114,62 @@ public class ClientVoExample {
             return (Criteria) this;
         }
 
-        public Criteria andClientIdEqualTo(Integer value) {
+        public Criteria andClientIdEqualTo(String value) {
             addCriterion("client_id =", value, "clientId");
             return (Criteria) this;
         }
 
-        public Criteria andClientIdNotEqualTo(Integer value) {
+        public Criteria andClientIdNotEqualTo(String value) {
             addCriterion("client_id <>", value, "clientId");
             return (Criteria) this;
         }
 
-        public Criteria andClientIdGreaterThan(Integer value) {
+        public Criteria andClientIdGreaterThan(String value) {
             addCriterion("client_id >", value, "clientId");
             return (Criteria) this;
         }
 
-        public Criteria andClientIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andClientIdGreaterThanOrEqualTo(String value) {
             addCriterion("client_id >=", value, "clientId");
             return (Criteria) this;
         }
 
-        public Criteria andClientIdLessThan(Integer value) {
+        public Criteria andClientIdLessThan(String value) {
             addCriterion("client_id <", value, "clientId");
             return (Criteria) this;
         }
 
-        public Criteria andClientIdLessThanOrEqualTo(Integer value) {
+        public Criteria andClientIdLessThanOrEqualTo(String value) {
             addCriterion("client_id <=", value, "clientId");
             return (Criteria) this;
         }
 
-        public Criteria andClientIdIn(List<Integer> values) {
+        public Criteria andClientIdLike(String value) {
+            addCriterion("client_id like", value, "clientId");
+            return (Criteria) this;
+        }
+
+        public Criteria andClientIdNotLike(String value) {
+            addCriterion("client_id not like", value, "clientId");
+            return (Criteria) this;
+        }
+
+        public Criteria andClientIdIn(List<String> values) {
             addCriterion("client_id in", values, "clientId");
             return (Criteria) this;
         }
 
-        public Criteria andClientIdNotIn(List<Integer> values) {
+        public Criteria andClientIdNotIn(List<String> values) {
             addCriterion("client_id not in", values, "clientId");
             return (Criteria) this;
         }
 
-        public Criteria andClientIdBetween(Integer value1, Integer value2) {
+        public Criteria andClientIdBetween(String value1, String value2) {
             addCriterion("client_id between", value1, value2, "clientId");
             return (Criteria) this;
         }
 
-        public Criteria andClientIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andClientIdNotBetween(String value1, String value2) {
             addCriterion("client_id not between", value1, value2, "clientId");
             return (Criteria) this;
         }

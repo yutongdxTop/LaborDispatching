@@ -1,7 +1,7 @@
 package com.yutongdxTop.LaborDispatching.domain.pojo;
 
 public class Client {
-    private Integer id;
+    private String id;
 
     private String name;
 
@@ -11,12 +11,12 @@ public class Client {
 
     private String type;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getName() {

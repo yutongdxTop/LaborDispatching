@@ -1,7 +1,7 @@
 package com.yutongdxTop.LaborDispatching.domain.pojo;
 
 public class Staff {
-    private Integer id;
+    private String id;
 
     private String idNumber;
 
@@ -13,12 +13,12 @@ public class Staff {
 
     private String type;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getIdNumber() {

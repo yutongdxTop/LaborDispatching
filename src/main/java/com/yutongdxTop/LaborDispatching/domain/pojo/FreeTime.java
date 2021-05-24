@@ -1,28 +1,28 @@
 package com.yutongdxTop.LaborDispatching.domain.pojo;
 
 public class FreeTime {
-    private Integer id;
+    private String id;
 
-    private Integer staffId;
+    private String staffId;
 
     private String timeBegin;
 
     private String timeEnd;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public Integer getStaffId() {
+    public String getStaffId() {
         return staffId;
     }
 
-    public void setStaffId(Integer staffId) {
-        this.staffId = staffId;
+    public void setStaffId(String staffId) {
+        this.staffId = staffId == null ? null : staffId.trim();
     }
 
     public String getTimeBegin() {

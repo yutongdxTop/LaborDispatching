@@ -12,7 +12,7 @@ public interface ContactMapper {
 
     int deleteByExample(ContactExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(Contact record);
 
@@ -20,7 +20,7 @@ public interface ContactMapper {
 
     List<Contact> selectByExample(ContactExample example);
 
-    Contact selectByPrimaryKey(Integer id);
+    Contact selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") Contact record, @Param("example") ContactExample example);
 
