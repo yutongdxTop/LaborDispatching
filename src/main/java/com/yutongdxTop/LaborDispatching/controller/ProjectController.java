@@ -21,9 +21,9 @@ public class ProjectController {
 
     @RequestMapping(value = "/getAllProjects")
     @ResponseBody
-    public JSONResult getAllProjects(@RequestParam(value = "id", defaultValue = "-1") String clientId, @RequestParam(value = "type",  defaultValue = "id") String type) {
+    public JSONResult getAllProjects(@RequestParam(value = "id", defaultValue = "-1") String clientId, @RequestParam(value = "type",  defaultValue = "all") String type) {
         List<Project> projects;
-        if (type.equals("id")) {
+        if (type.equals("all")) {
             projects = projectService.getAllProjects(clientId);  //获取所有项目信息
         } else {
             projects = projectService.getProjectByTypeLike(clientId, type);  //配合前端搜索功能，根据项目分类搜索项目

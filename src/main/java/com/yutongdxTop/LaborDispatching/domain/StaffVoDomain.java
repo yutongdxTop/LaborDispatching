@@ -33,7 +33,7 @@ public class StaffVoDomain implements StaffVoService {
     public List<StaffVo> getAllStaffVos() {
         StaffVoExample staffVoExample = new StaffVoExample();
         StaffVoExample.Criteria criteria = staffVoExample.createCriteria();
-        criteria.andStaffIdIsNotNull();
+        criteria.andStaffIdIsNotNull().andIdentityEqualTo("自由职业者");
         return staffVoMapper.selectByExample(staffVoExample);
     }
 
@@ -51,24 +51,17 @@ public class StaffVoDomain implements StaffVoService {
     }
 
     @Override
-    public StaffVo getStaffVoByTypeLike(String type) {
+    public List<StaffVo> getStaffVoByTypeLike(String type) {
         StaffVoExample staffVoExample = new StaffVoExample();
         StaffVoExample.Criteria criteria = staffVoExample.createCriteria();
-        criteria.andTypeLike("%" + type + "%");
-        List<StaffVo> staffVos = staffVoMapper.selectByExample(staffVoExample);
-        if (staffVos.size() != 0) {
-            return staffVos.get(0);
-        } else {
-            return null;
-        }
+        criteria.andTypeLike("%" + type + "%").andIdentityEqualTo("自由职业者");
+        return staffVoMapper.selectByExample(staffVoExample);
     }
 
     @Override
-    public String deleteStaffVo(String userName) {
+    public String deleteStaffVo(String staffId) {
         try{
-            User user = userMapper.selectByPrimaryKey(userName);
-            int i = staffMapper.deleteByPrimaryKey(user.getStaffId());
-            i =  i + userMapper.deleteByPrimaryKey(userName);
+            int i = staffMapper.deleteByPrimaryKey(staffId);
             if (i==0){
                 return "删除失败，用户不存在";
             }else{
@@ -168,14 +161,14 @@ public class StaffVoDomain implements StaffVoService {
                 user.setName(staffVo.getUserName());
                 user.setPassword(staffVo.getPassword());
                 user.setStaffId(staffId);
-                user.setStaffId(null);
+                user.setClientId(null);
 
                 i = staffMapper.insert(staff) + userMapper.insert(user);
             }
 
             System.out.println("addStaffVo返回：" + i);
-            if (i == 2) {
-                return "添加失败,员工主体或用户名已存在";
+            if (i != 2) {
+                return "添加失败,员工主体（身份证号码）或用户名已存在";
             } else {
                 return "添加成功";
             }

@@ -102,7 +102,7 @@ layui.use(['form','layer','table','laytpl'],function(){
                 },function(json){
                     var jsonObj = JSON.stringify(json);    //将json对象转换为字符串
                     jsonObj = eval('(' + jsonObj + ')');  // 把JSON字符串解析为javascript对象
-                    layer.alert(jsonObj.msg);
+                    layer.msg(jsonObj.msg);
                     tableIns.reload();
                     layer.close(index);
                 });

@@ -51,24 +51,17 @@ public class ClientDomain implements ClientVoService {
     }
 
     @Override
-    public ClientVo getClientVoByTypeLike(String type) {
+    public List<ClientVo> getClientVoByTypeLike(String type) {
         ClientVoExample clientVoExample = new ClientVoExample();
         ClientVoExample.Criteria criteria = clientVoExample.createCriteria();
         criteria.andTypeLike("%" + type + "%");
-        List<ClientVo> clientVos = clientVoMapper.selectByExample(clientVoExample);
-        if (clientVos.size() != 0) {
-            return clientVos.get(0);
-        } else {
-            return null;
-        }
+        return clientVoMapper.selectByExample(clientVoExample);
     }
 
     @Override
-    public String deleteClientVo(String userName) {
+    public String deleteClientVo(String clientId) {
         try{
-            User user = userMapper.selectByPrimaryKey(userName);
-            int i = userMapper.deleteByPrimaryKey(userName);
-            i =  i + clientMapper.deleteByPrimaryKey(user.getClientId());
+            int i = clientMapper.deleteByPrimaryKey(clientId);
             if (i==0){
                 return "删除失败，用户不存在";
             }else{
@@ -76,7 +69,7 @@ public class ClientDomain implements ClientVoService {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "删除失败";
+            return "删除失败,客户尚有关联项目";
         }
     }
 
@@ -172,8 +165,8 @@ public class ClientDomain implements ClientVoService {
             }
 
             System.out.println("addClientVo返回：" + i);
-            if (i == 2) {
-                return "添加失败,客户主体或用户名已存在";
+            if (i != 2) {
+                return "添加失败,客户主体（客户名称）或用户名已存在";
             } else {
                 return "添加成功";
             }

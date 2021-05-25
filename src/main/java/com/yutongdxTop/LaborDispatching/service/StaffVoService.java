@@ -11,11 +11,11 @@ public interface StaffVoService {
 
     StaffVo getStaffVoByUserName(String userName);
 
-    StaffVo getStaffVoByTypeLike(String type);
+    List<StaffVo> getStaffVoByTypeLike(String type);
 
     String addStaffVo(@Param("staffVo") StaffVo staffVo);
 
-    String deleteStaffVo(String userName);
+    String deleteStaffVo(String staffId);
 
     String updateStaffVo(StaffVo staffVo);
 

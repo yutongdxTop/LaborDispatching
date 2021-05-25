@@ -11,11 +11,11 @@ public interface ClientVoService {
 
     ClientVo getClientVoByUserName(String userName);
 
-    ClientVo getClientVoByTypeLike(String type);
+    List<ClientVo> getClientVoByTypeLike(String type);
 
     String addClientVo(@Param("clientVo") ClientVo clientVo);
 
-    String deleteClientVo(String userName);
+    String deleteClientVo(String clientId);
 
     String updateClientVo(ClientVo clientVo);
 

@@ -6,7 +6,7 @@ layui.use(['form','layer','table','laytpl'],function(){
         table = layui.table;
     var clientId = -1;
     //按照服务器部署的网址划分网址
-    var html = decodeURI(parent.location.href.split('/')[6].split('?')[0]);
+    var html = decodeURI(parent.location.href.split('/')[parent.location.href.split('/').length - 1].split('?')[0]);
     if (html === "clientIndex.html") {  //若上一级界面是客户主界面则只展示客户发布的项目信息
         clientId = decodeURI(window.top.location.href.split('?')[1].split('&')[1])
     }
@@ -15,7 +15,7 @@ layui.use(['form','layer','table','laytpl'],function(){
     var tableIns = table.render({
         elem: '#project',
         url : projectUrl,
-        where: {id : clientId, type : "id"}, //如果无需传递额外参数，可不加该参数
+        where: {id : clientId, type : "all"}, //如果无需传递额外参数，可不加该参数
         method: 'post', //如果无需自定义HTTP类型，可不加该参数
         cellMinWidth : 95,
         page : false,
@@ -106,7 +106,7 @@ layui.use(['form','layer','table','laytpl'],function(){
                 },function(json){
                     var jsonObj = JSON.stringify(json);    //将json对象转换为字符串
                     jsonObj = eval('(' + jsonObj + ')');  // 把JSON字符串解析为javascript对象
-                    layer.alert(jsonObj.msg);
+                    layer.msg(jsonObj.msg);
                     tableIns.reload();
                     layer.close(index);
                 });

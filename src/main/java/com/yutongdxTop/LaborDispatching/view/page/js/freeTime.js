@@ -24,9 +24,9 @@ layui.use(['form','layer','table','laytpl'],function(){
         },
         cols : [[
             {type: "checkbox", fixed:"left", width:50},
-            {field: 'id', title: '时间表编号', align:"center"},
-            {field: 'timeBegin', title: '空闲时间起始点', minWidth:150, align:'center'},
-            {field: 'timeEnd', title: '空闲时间结束点', minWidth:150, align:'center'},
+            {field: 'id', title: '时间表编号', align:"center", sort:true},
+            {field: 'timeBegin', title: '空闲时间起始点', minWidth:150, align:'center', sort:true},
+            {field: 'timeEnd', title: '空闲时间结束点', minWidth:150, align:'center', sort:true},
             {title: '操作', minWidth:175, templet:'#freeTimeBar',fixed:"right",align:"center"}
         ]]
     });
@@ -102,7 +102,7 @@ layui.use(['form','layer','table','laytpl'],function(){
                 },function(json){
                     var jsonObj = JSON.stringify(json);    //将json对象转换为字符串
                     jsonObj = eval('(' + jsonObj + ')');  // 把JSON字符串解析为javascript对象
-                    layer.alert(jsonObj.msg);
+                    layer.msg(jsonObj.msg);
                     tableIns.reload();
                     layer.close(index);
                 });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <title>项目信息查看</title>
@@ -31,7 +31,7 @@
         table.render({
             elem: '#project',
             url : projectUrl,
-            where: {id :staffId, type : "id"}, //如果无需传递额外参数，可不加该参数
+            where: {id :staffId, type : "all"}, //如果无需传递额外参数，可不加该参数
             method: 'post', //如果无需自定义HTTP类型，可不加该参数
             cellMinWidth : 95,
             page : false,
@@ -40,7 +40,7 @@
             limit : 20,
             id : "projectTable",
             initSort: {
-                field: 'status' //排序字段，对应 cols 设定的各字段名
+                field: 'id' //排序字段，对应 cols 设定的各字段名
                 ,type: 'asc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
             },
             cols : [[
