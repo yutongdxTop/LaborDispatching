@@ -4,9 +4,10 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         $ = layui.jquery;
     var url = window.parent.document.URL;
     var userName, id;
+    //按照服务器部署的网址划分网址
     var html = decodeURI(parent.location.href.split('/')[6]);
 
-    if (html !== "staff.html") {  //用户更改个人信息
+    if (html !== "staffVo.html") {  //若上一级页面不是自由职业者信息管理界面则是自由职业者更改个人信息
         userName = decodeURI(url.split('?')[1].split('&')[0]);
         id = decodeURI(url.split('&')[1]);
 

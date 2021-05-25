@@ -4,9 +4,10 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         $ = layui.jquery;
     var url = window.top.location.href;
     var userName, id;
+    //按照服务器部署的网址划分网址
     var html = decodeURI(parent.location.href.split('/')[6]);
 
-    if (html !== "client.html") {  //用户更改个人信息
+    if (html !== "clientVo.html") {  //若上一级页面不是客户信息管理界面则是客户更改个人信息
         userName = decodeURI(url.split('?')[1].split('&')[0]);
         id = decodeURI(url.split('&')[1]);
         //渲染信息

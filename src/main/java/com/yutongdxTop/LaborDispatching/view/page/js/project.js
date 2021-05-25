@@ -5,8 +5,9 @@ layui.use(['form','layer','table','laytpl'],function(){
         laytpl = layui.laytpl,
         table = layui.table;
     var clientId = -1;
-    var html = decodeURI(parent.location.href.split('/')[6]);
-    if (html !== "client.html") {  //若上一级界面不是客户信息管理界面则只展示客户发布的信息
+    //按照服务器部署的网址划分网址
+    var html = decodeURI(parent.location.href.split('/')[6].split('?')[0]);
+    if (html === "clientIndex.html") {  //若上一级界面是客户主界面则只展示客户发布的项目信息
         clientId = decodeURI(window.top.location.href.split('?')[1].split('&')[1])
     }
 
