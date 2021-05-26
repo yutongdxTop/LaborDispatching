@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface ProjectService {
+public interface ProjectService {  //项目信息管理服务
 
     List<Project> getAllProjects(String clientId);
 

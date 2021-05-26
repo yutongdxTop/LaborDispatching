@@ -65,7 +65,7 @@ public class FreelancerDomain implements FreelancerService {
                 int i = freeTimeMapper.updateByPrimaryKeySelective(freeTime);
                 System.out.println("updateFreeTime返回：" + i);
                 if (i == 0) {
-                    return "更新失败，，时间表信息没有修改";
+                    return "更新失败，时间表信息没有修改";
                 } else {
                     return "更新成功";
                 }
@@ -99,7 +99,7 @@ public class FreelancerDomain implements FreelancerService {
         int i = contactMapper.updateByPrimaryKeySelective(contact);
         System.out.println("updateContact返回:"+i);
         if (i==0){
-            return "修改失败，时间表信息没有修改";
+            return "修改失败，联系方式没有修改";
         }else{
             return "修改成功";
         }
@@ -129,7 +129,7 @@ public class FreelancerDomain implements FreelancerService {
                 int i = contactMapper.updateByPrimaryKeySelective(contact);
                 System.out.println("updateContact返回：" + i);
                 if (i == 0) {
-                    return "更新失败，，时间表信息没有修改";
+                    return "更新失败，联系方式没有修改";
                 } else {
                     return "更新成功";
                 }
@@ -146,7 +146,7 @@ public class FreelancerDomain implements FreelancerService {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "添加失败 时间表重复 不能重ID";
+            return "添加失败 联系方式重复 不能重ID";
         }
     }
 }

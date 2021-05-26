@@ -18,16 +18,56 @@
                 <div class="layui-form-mid layui-word-aux">（由系统生成）</div>
             </div>
         </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">员工编号</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input staffId layui-disabled" name="staffId"
+                           placeholder="请输入员工编号" autocomplete="off" disabled>
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="layui-form-item">
+            <label class="layui-form-label">员工姓名</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input name" name="name" lay-verify="required"
+                           placeholder="请输入员工姓名" autocomplete="off" disabled>
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input sex" name="sex" lay-verify="required"
+                           placeholder="请输入性别" autocomplete="off" disabled>
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="layui-form-item">
+            <label class="layui-form-label">类别</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input type" name="type" lay-verify="required"
+                           placeholder="请输入员工分类" autocomplete="off" disabled>
+                </label>
+            </div>
+        </div>
+        <br>
         <div class="layui-form-item" style="margin-left: 82px;">
             <div class="layui-inline">
                 <label class="layui-form-label" style="margin-left: -122.8px; width: 29%">空闲时间范围</label>
                 <div class="layui-inline" id="range">
                     <div class="layui-input-inline">
-                        <input type="text" autocomplete="off" id="timeBegin" name="timeBegin" class="layui-input timeBegin" placeholder="开始时间">
+                        <input type="text" autocomplete="off" id="freeTimeBegin" name="freeTimeBegin" class="layui-input freeTimeBegin" placeholder="开始时间">
                     </div>
                     <div class="layui-form-mid">-</div>
                     <div class="layui-input-inline">
-                        <input type="text" autocomplete="off" id="timeEnd" name="timeEnd" class="layui-input timeEnd" placeholder="结束时间">
+                        <input type="text" autocomplete="off" id="freeTimeEnd" name="freeTimeEnd" class="layui-input freeTimeEnd" placeholder="结束时间">
                     </div>
                 </div>
             </div>
@@ -53,7 +93,7 @@
             elem: '#range'
             ,type: 'datetime'
             //设置开始日期、日期日期的 input 选择器
-            ,range: ['#timeBegin', '#timeEnd']
+            ,range: ['#freeTimeBegin', '#freeTimeEnd']
             ,format: 'yyyy/MM/dd HH:mm:ss'
             ,min:0
             ,max:365
@@ -66,17 +106,20 @@
         var form = layui.form
             ,layer = layui.layer,
             $ = layui.jquery;
-        var staffId = decodeURI(window.top.location.href.split('&')[1]);
 
         form.on('submit(set)', function (data) {
             layer.alert(JSON.stringify(data.field), {
                 title: '最终的提交信息'
             }, function (index, layero) {
-                $.post(address + "LaborDispatching/freelancer/addFreeTime",{
+                $.post(address + "LaborDispatching/administrator/addFreeTimeVo",{
                     id : data.field.id,
-                    staffId : staffId,
-                    timeBegin : data.field.timeBegin,
-                    timeEnd : data.field.timeEnd
+                    staffId : data.field.staffId,
+                    name : data.field.name,
+                    sex : data.field.sex,
+                    identity : data.field.identity,
+                    type : data.field.type,
+                    freeTimeBegin : data.field.freeTimeBegin,
+                    freeTimeEnd : data.field.freeTimeEnd
                 },function(json){
                     var jsonObj = JSON.stringify(json);    //将json对象转换为字符串
                     jsonObj = eval('(' + jsonObj + ')');  // 把JSON字符串解析为javascript对象

@@ -2,19 +2,19 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>员工个人信息界面</title>
+    <title>添加全职员工信息</title>
     <link rel="stylesheet" href="../../resource/layui/css/layui.css">
     <link rel="stylesheet" type="text/css" href="../css/add.css">
     <link rel="stylesheet" type="text/css" href="../css/public.css">
 </head>
-<body class="childrenBody">
-<div class="divForm addStaffForm">
+<body>
+<div class="divForm">
     <form class="layui-form layui-form-pane personalForm" action="" method="post">
         <div class="layui-form-item">
             <label class="layui-form-label">员工编号</label>
             <div class="layui-input-inline">
                 <label>
-                    <input type="text" class="layui-input staffId layui-disabled" name="staffId" lay-verify="required"
+                    <input type="text" class="layui-input id layui-disabled" name="id"
                            placeholder="请输入员工编号" autocomplete="off" disabled>
                     <div class="layui-form-mid layui-word-aux">（由系统生成）</div>
                 </label>
@@ -51,18 +51,6 @@
         </div>
         <br>
         <div class="layui-form-item">
-            <label class="layui-form-label">身份</label>
-            <div class="layui-input-inline">
-                <select class="identity" id="identity" name="identity" lay-verify="required">
-                    <option value="">请选择员工身份</option>
-                    <option value="自由职业者">自由职业者</option>
-                    <option value="全职员工">全职员工</option>
-                    <option value="管理员">管理员</option>
-                </select>
-            </div>
-        </div>
-        <br>
-        <div class="layui-form-item">
             <label class="layui-form-label">类别</label>
             <div class="layui-input-inline">
                 <label>
@@ -72,30 +60,10 @@
             </div>
         </div>
         <br>
-        <div class="layui-form-item">
-            <label class="layui-form-label">用户名</label>
-            <div class="layui-input-inline">
-                <label>
-                    <input type="text" class="layui-input userName" name="userName" lay-verify="required"
-                           placeholder="请输入用户名" autocomplete="off">
-                </label>
-            </div>
-        </div>
-        <br>
-        <div class="layui-form-item">
-            <label class="layui-form-label">用户密码</label>
-            <div class="layui-input-inline">
-                <label>
-                    <input type="text" class="layui-input password" name="password" lay-verify="required"
-                           placeholder="请输入用户密码" autocomplete="off">
-                </label>
-            </div>
-        </div>
-        <br>
-        <div class="layui-form-item botton">
+        <div class="layui-form-item botton" style="width: 400px">
             <div class="layui-input-inline">
                 <button type="submit" class="layui-btn" lay-submit="" lay-filter="set">确认</button>
-                <button type="cancel" class="layui-btn layui-btn-danger right">重置</button>
+                <button type="reset" class="layui-btn layui-btn-danger right">重置</button>
             </div>
         </div>
     </form>
@@ -103,6 +71,39 @@
 
 <script src="../../resource/layui/layui.js"></script>
 <script src="../js/address.js"></script>
-<script src="../js/staffPersonal.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            $ = layui.jquery;
+
+        //监听提交
+        form.on('submit(set)', function (data) {
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            }, function (index) {
+                $.post(address + "LaborDispatching/staff/addStaff", {
+                    id : data.field.id,
+                    name : data.field.name,
+                    idNumber : data.field.idNumber,
+                    sex : data.field.sex,
+                    identity : "全职员工",
+                    type : data.field.type
+                }, function(json){
+                    var jsonObj = JSON.stringify(json);    //将json对象转换为字符串
+                    jsonObj = eval('(' + jsonObj + ')');  // 把JSON字符串解析为javascript对象
+                    layer.msg(jsonObj.msg);
+                });
+                setTimeout(function(){
+                    layer.close(index);
+                    layer.closeAll("iframe");
+                    parent.location.reload();
+                },1000);
+            });
+            return false;
+        });
+
+    });
+</script>
 </body>
 </html>

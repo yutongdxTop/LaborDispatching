@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../css/public.css">
 </head>
 <body class="childrenBody">
-<div class="divForm">
+<div class="divForm addStaffForm">
     <form class="layui-form layui-form-pane" action="" method="post">
         <div class="layui-form-item">
             <label class="layui-form-label" style="width: 29%">联系方式编号</label>
@@ -18,6 +18,36 @@
                 <div class="layui-form-mid layui-word-aux">（由系统生成）</div>
             </div>
         </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 29%">员工编号</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input staffId layui-disabled" name="staffId"
+                           placeholder="请输入员工编号" autocomplete="off" disabled>
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 29%">员工姓名</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input name" name="name" lay-verify="required"
+                           placeholder="请输入员工姓名" autocomplete="off" disabled>
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 29%">性别</label>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" class="layui-input sex" name="sex" lay-verify="required"
+                           placeholder="请输入性别" autocomplete="off" disabled>
+                </label>
+            </div>
+        </div>
+        <br>
         <div class="layui-form-item">
             <label class="layui-form-label" style="width: 29%">联系方式</label>
             <div class="layui-input-inline">
@@ -52,15 +82,17 @@
         var form = layui.form
             ,layer = layui.layer,
             $ = layui.jquery;
-        var staffId = decodeURI(window.top.location.href.split('&')[1]);
 
         form.on('submit(set)', function (data) {
             layer.alert(JSON.stringify(data.field), {
                 title: '最终的提交信息'
             }, function (index, layero) {
-                $.post(address + "LaborDispatching/freelancer/addContact",{
+                $.post(address + "LaborDispatching/administrator/addContactVo",{
                     id : data.field.id,
-                    staffId : staffId,
+                    staffId : data.field.staffId,
+                    name : data.field.name,
+                    sex : data.field.sex,
+                    identity : data.field.identity,
                     contactDetails : data.field.contactDetails,
                     contactValue : data.field.contactValue
                 },function(json){

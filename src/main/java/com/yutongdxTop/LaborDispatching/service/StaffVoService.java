@@ -5,9 +5,9 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface StaffVoService {
+public interface StaffVoService {  //自由职业者个人信息管理服务
 
-    List<StaffVo> getAllStaffVos();
+    List<StaffVo> getAllFreelancers();
 
     StaffVo getStaffVoByUserName(String userName);
 

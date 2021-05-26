@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface ClientVoService {
+public interface ClientVoService {  //客户信息管理服务
 
     List<ClientVo> getAllClientVos();
 

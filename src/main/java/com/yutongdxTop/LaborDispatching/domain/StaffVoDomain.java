@@ -30,10 +30,10 @@ public class StaffVoDomain implements StaffVoService {
     UserMapper userMapper;
 
     @Override
-    public List<StaffVo> getAllStaffVos() {
+    public List<StaffVo> getAllFreelancers() {
         StaffVoExample staffVoExample = new StaffVoExample();
         StaffVoExample.Criteria criteria = staffVoExample.createCriteria();
-        criteria.andStaffIdIsNotNull().andIdentityEqualTo("自由职业者");
+        criteria.andIdentityEqualTo("自由职业者");
         return staffVoMapper.selectByExample(staffVoExample);
     }
 

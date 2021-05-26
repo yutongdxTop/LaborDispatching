@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface FreelancerService {
+public interface FreelancerService {  //自由职业者对个人时间表和联系方式管理服务
 
     List<FreeTime> getAllFreeTimes(String staffId);
 

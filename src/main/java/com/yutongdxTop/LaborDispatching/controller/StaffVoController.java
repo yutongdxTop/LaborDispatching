@@ -19,12 +19,12 @@ public class StaffVoController {
     @Autowired
     private StaffVoService staffVoService;
 
-    @RequestMapping(value = "/getAllStaffVos")
+    @RequestMapping(value = "/getAllFreelancers")
     @ResponseBody
-    public JSONResult getAllStaffVos(@RequestParam(value = "type",  defaultValue = "all") String type) {
+    public JSONResult getAllFreelancers(@RequestParam(value = "type",  defaultValue = "all") String type) {
         List<StaffVo> staffVos;
         if (Objects.equals(type, "all")) {
-            staffVos = staffVoService.getAllStaffVos();
+            staffVos = staffVoService.getAllFreelancers();
         } else {
             staffVos = staffVoService.getStaffVoByTypeLike(type);
         }

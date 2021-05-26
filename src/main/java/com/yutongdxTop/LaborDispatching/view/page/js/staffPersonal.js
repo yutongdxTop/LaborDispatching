@@ -21,7 +21,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             $(".name").val(jsonObj.data.name);
             $(".idNumber").val(jsonObj.data.idNumber);
             $(".sex").val(jsonObj.data.sex);
-            $(".identity").val(jsonObj.data.identity).attr("disabled","disabled").addClass("disabled");;
+            $(".identity").val(jsonObj.data.identity).attr("disabled","disabled").addClass("disabled");
             $(".type").val(jsonObj.data.type);
             $(".userName").val(jsonObj.data.userName);
             $(".password").val(jsonObj.data.password);
