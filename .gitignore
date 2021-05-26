@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/java/com/yutongdxTop/LaborDispatching/view/page/testjson/client.json
+/src/main/java/com/yutongdxTop/LaborDispatching/view/page/testjson/project.json
+/src/main/java/com/yutongdxTop/LaborDispatching/view/page/testjson/freeTime.json
+/src/main/java/com/yutongdxTop/LaborDispatching/view/page/testjson/contact.json
