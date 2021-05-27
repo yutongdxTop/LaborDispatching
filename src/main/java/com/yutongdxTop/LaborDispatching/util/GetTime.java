@@ -1,5 +1,6 @@
 package com.yutongdxTop.LaborDispatching.util;
 
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -24,6 +25,12 @@ public class GetTime {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date(currentTime);
         return dateFormat.format(date);
+    }
+
+    public static Date dateTransform(String time) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        ParsePosition position = new ParsePosition(0);
+        return dateFormat.parse(time, position);
     }
 
 }

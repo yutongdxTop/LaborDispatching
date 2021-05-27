@@ -1,5 +1,5 @@
-var address = //var address = "http://yutongdx.top:8080/";
-    "http://localhost:8080/";
+var address = "http://yutongdx.top:8080/";
+    //"http://localhost:8080/";
 
 var projectUrl = address + 'LaborDispatching/project/getAllProjects' + '?timestamp=' + new Date().getTime();
     //projectUrl = '../testjson/project.json';
@@ -20,3 +20,5 @@ var staffUrl = address + 'LaborDispatching/staff/getAllStaffs' + '?timestamp=' +
 var freeTimeVoUrl = address + 'LaborDispatching/administrator/getAllFreeTimeVos' + '?timestamp=' + new Date().getTime();
 
 var contactVoUrl = address + 'LaborDispatching/administrator/getAllContactVos' + '?timestamp=' + new Date().getTime();
+
+var auditUrl = address + 'LaborDispatching/audit/getAllProjects' + '?timestamp=' + new Date().getTime();
