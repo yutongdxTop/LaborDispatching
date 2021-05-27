@@ -1,0 +1,49 @@
+/*登录*/
+.loginHtml,.loginBody{ height:100%;}
+.loginBody .bgimg{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    min-width: 1000px;
+    z-index:-10;
+    zoom: 1;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background: #fff url("../../resource/image/login_bg.jpg") no-repeat center 0;
+}
+.loginBody form.layui-form{ padding:0 20px; width:300px; height:400px; position:absolute; left:50%; top:50%; margin:-150px 0 0 -150px; -webkit-box-sizing:border-box;-moz-box-sizing:border-box; -o-box-sizing:border-box; box-sizing:border-box; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; box-shadow:0 0 50px;}
+.login_face{ margin:-55px auto 20px; width:100px; height:100px; -webkit-border-radius:50%; -moz-border-radius:50%; border-radius:50%; border:5px solid #fff; overflow:hidden;box-shadow:0 0 30px #009688;}
+.login_face img{ width:100%;}
+.loginBody .layui-form-item{ position:relative;}
+.loginBody .layui-form-item label{ position:absolute; color:#757575; left:10px; top:9px; line-height:20px; background:#fff; padding:0 5px; font-size:14px; cursor:text;}
+.loginBody .layui-form-item.layui-input-focus label{ top:-10px; font-size:12px; color:#ff6700;}
+.loginBody .layui-form-item.layui-input-active label{ top:-10px; font-size:12px;}
+.loginBody .layui-input::-webkit-input-placeholder{color:#fff;}
+.loginBody .layui-input::-moz-placeholder{color:#fff;}
+.loginBody .layui-input:-ms-input-placeholder{color:#fff;}
+.loginBody .layui-input::placeholder{color:#fff;}
+.loginBody .layui-form-item.layui-input-focus input{ border-color:#ff6700 !important;}
+.loginBody .layui-input-focus .layui-input::-webkit-input-placeholder{color:#757575;}
+.loginBody .layui-input-focus .layui-input::-moz-placeholder{color:#757575;}
+.loginBody .layui-input-focus .layui-input:-ms-input-placeholder{color:#757575;}
+.loginBody .layui-input-focus .layui-input::placeholder{color:#757575;}
+
+.validation {
+    background-color:#82cffd;
+    text-align:center;
+}
+.J_codeimg
+{
+	width: 85px;
+    height: 30px;
+    padding: 3px;
+    z-index: 0;
+    color:#FFF;
+}
+
+/*底部*/
+.footer{text-align: center; line-height:44px;border-left: 2px; z-index:999; width: 100%; position: fixed; bottom: 0;}
+
