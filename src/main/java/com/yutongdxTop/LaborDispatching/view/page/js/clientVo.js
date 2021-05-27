@@ -20,7 +20,7 @@ layui.use(['form','layer','table','laytpl'],function(){
             ,type: 'asc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
         },
         cols : [[
-            {field: 'clientId', title: '客户编号', align:"center", sort:true},
+            {field: 'clientId', title: '客户编号', minWidth:170, align:"center", sort:true},
             {field: 'name', title: '客户姓名', align:'center'},
             {field: 'telephone', title: '联系电话', align:'center'},
             {field: 'address', title: '联系地址', align:'center'},

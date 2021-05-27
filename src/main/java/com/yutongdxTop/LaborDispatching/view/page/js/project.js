@@ -28,10 +28,10 @@ layui.use(['form','layer','table','laytpl'],function(){
             ,type: 'asc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
         },
         cols : [[
-            {field: 'id', title: '项目编号',minWidth:170, align:"center", sort:true},
-            {field: 'type', title: '项目类型', align:'center'},
-            {field: 'description', title: '项目描述', minWidth:100, align:'center'},
-            {field: 'clientId', title: '客户编号', align:'center'},
+            {field: 'id', title: '项目编号', minWidth:170, align:"center", sort:true},
+            {field: 'type', title: '项目类型', minWidth:100, align:'center'},
+            {field: 'description', title: '项目描述', align:'center'},
+            {field: 'clientId', title: '客户编号', minWidth:170, align:'center'},
             {field: 'beginTime', title: '项目开始时间', minWidth:170, align:'center'},
             {field: 'endTime', title: '项目结束时间', minWidth:170, align:"center"},
             {field: 'status', title: '项目接单员工编号', minWidth:170, align:"center", sort:true},

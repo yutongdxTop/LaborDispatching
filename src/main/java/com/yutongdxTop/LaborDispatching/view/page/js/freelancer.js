@@ -20,7 +20,7 @@ layui.use(['form','layer','table','laytpl'],function(){
             ,type: 'asc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
         },
         cols : [[
-            {field: 'staffId', title: '员工编号', align:"center", sort:true},
+            {field: 'staffId', title: '员工编号', minWidth:170, align:"center", sort:true},
             {field: 'name', title: '员工姓名', align:'center'},
             {field: 'idNumber', title: '身份证号码', align:'center'},
             {field: 'sex', title: '性别', align:'center'},

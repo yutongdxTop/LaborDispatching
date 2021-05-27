@@ -25,7 +25,7 @@ layui.use(['form','layer','table','laytpl'],function(){
             {field: 'staffId', title: '员工编号', minWidth:180, align:"center", sort:true},
             {field: 'name', title: '员工姓名', align:'center'},
             {field: 'sex', title: '性别', align:'center'},
-            {field: 'identity', title: '身份', minWidth:150, align:'center'},
+            {field: 'identity', title: '身份', minWidth:100, align:'center'},
             {field: 'type', title: '员工类别', align:'center'},
             {field: 'freeTimeBegin', title: '空闲时间起始点', minWidth:180, align:'center', sort:true},
             {field: 'freeTimeEnd', title: '空闲时间结束点', minWidth:180, align:'center', sort:true},
