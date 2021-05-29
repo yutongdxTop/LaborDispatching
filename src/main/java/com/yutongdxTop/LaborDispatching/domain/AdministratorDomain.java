@@ -96,7 +96,7 @@ public class AdministratorDomain implements AdministratorService {
             } else {  //否则为添加时间表信息
                 FreeTime freeTime = new FreeTime();
                 String staffId = freeTimeVo.getStaffId();
-                freeTime.setId(staffId.substring(staffId.length()-2) + GetTime.getTime() + GetRandom.getRandom(0, 99));
+                freeTime.setId(staffId.substring(staffId.length()-2) + GetTime.getNowTimeString("yyMMddHHmm") + GetRandom.getRandom(0, 99));
                 freeTime.setStaffId(freeTimeVo.getStaffId());
                 freeTime.setTimeBegin(freeTimeVo.getFreeTimeBegin());
                 freeTime.setTimeEnd(freeTimeVo.getFreeTimeEnd());
@@ -182,7 +182,7 @@ public class AdministratorDomain implements AdministratorService {
             } else {  //否则为添加联系方式
                 Contact contact = new Contact();
                 String staffId = contactVo.getStaffId();
-                contact.setId(staffId.substring(staffId.length()-2) + GetTime.getTime() + GetRandom.getRandom(0, 99));
+                contact.setId(staffId.substring(staffId.length()-2) + GetTime.getNowTimeString("yyMMddHHmm") + GetRandom.getRandom(0, 99));
                 contact.setStaffId(contactVo.getStaffId());
                 contact.setContactDetails(contactVo.getContactDetails());
                 contact.setContactValue(contactVo.getContactValue());

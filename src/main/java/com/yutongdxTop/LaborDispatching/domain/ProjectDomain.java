@@ -87,8 +87,8 @@ public class ProjectDomain implements ProjectService {
                     return "更新成功";
                 }
             } else {  //否则为添加项目信息
-                project.setId("p" + GetTime.getDateTime() + GetRandom.getRandom(0, 99));
-                project.setTime(GetTime.getDate());
+                project.setId("p" + GetTime.getNowTimeString("yyMMddHHmmss") + GetRandom.getRandom(0, 99));
+                project.setTime(GetTime.getNowTimeString("yyyy/MM/dd HH:mm:ss"));
                 int i = projectMapper.insert(project);
                 System.out.println("addProject返回：" + i);
                 if (i == 0) {

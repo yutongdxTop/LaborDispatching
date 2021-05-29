@@ -71,7 +71,7 @@ public class FreelancerDomain implements FreelancerService {
                 }
             } else {  //否则为添加时间表信息
                 String staffId = freeTime.getStaffId();
-                freeTime.setId(staffId.substring(staffId.length()-2) + GetTime.getTime() + GetRandom.getRandom(0, 99));
+                freeTime.setId(staffId.substring(staffId.length()-2) + GetTime.getNowTimeString("yyMMddHHmm") + GetRandom.getRandom(0, 99));
                 int i = freeTimeMapper.insert(freeTime);
                 System.out.println("addFreeTime返回：" + i);
                 if (i == 0) {
@@ -135,7 +135,7 @@ public class FreelancerDomain implements FreelancerService {
                 }
             } else {  //否则为添加时间表信息
                 String staffId = contact.getStaffId();
-                contact.setId(staffId.substring(staffId.length()-2) + GetTime.getTime() + GetRandom.getRandom(0, 99));
+                contact.setId(staffId.substring(staffId.length()-2) + GetTime.getNowTimeString("yyMMddHHmm") + GetRandom.getRandom(0, 99));
                 int i = contactMapper.insert(contact);
                 System.out.println("addContact返回：" + i);
                 if (i == 0) {

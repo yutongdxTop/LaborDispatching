@@ -148,7 +148,7 @@ public class StaffVoDomain implements StaffVoService {
             user = userMapper.selectByPrimaryKey(staffVo.getUserName());
 
             if (staffs.isEmpty() && user == null) {    //结果为空说明不存在员工主体和相同用户名，可以添加
-                String staffId = GetTime.getDateTime() + GetRandom.getRandom(0, 99);
+                String staffId = GetTime.getNowTimeString("yyMMddHHmmss") + GetRandom.getRandom(0, 99);
                 staff = new Staff();
                 staff.setId(staffId);
                 staff.setName(staffVo.getName());

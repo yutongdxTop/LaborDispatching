@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class StaffDomain implements StaffService {
@@ -61,19 +60,19 @@ public class StaffDomain implements StaffService {
                 if (!staffs.isEmpty()) {  //结果不为空说明存在员工主体，不可以添加
                     return "添加失败,员工主体（身份证号码）已存在";
                 }
-                staff.setId(GetTime.getDateTime() + GetRandom.getRandom(0, 99));
+                staff.setId(GetTime.getNowTimeString("yyMMddHHmmss") + GetRandom.getRandom(0, 99));
                 int i = staffMapper.insert(staff);
 
                 FreeTime freeTime = new FreeTime();  //为全职员工生成一个时间表
                 String staffId = staff.getId();
-                freeTime.setId(staffId.substring(staffId.length()-2) + GetTime.getTime() + GetRandom.getRandom(0, 99));
+                freeTime.setId(staffId.substring(staffId.length()-2) + GetTime.getNowTimeString("yyMMddHHmm") + GetRandom.getRandom(0, 99));
                 freeTime.setStaffId(staffId);
-                freeTime.setTimeBegin(GetTime.getDate());
+                freeTime.setTimeBegin(GetTime.getNowTimeString("yyyy/MM/dd HH:mm:ss"));
                 freeTime.setTimeEnd("∞");
                 i = i + freeTimeMapper.insert(freeTime);
 
                 Contact contact = new Contact();  //为全职员工生成一个联系方式
-                contact.setId(staffId.substring(staffId.length()-2) + GetTime.getTime() + GetRandom.getRandom(0, 99));
+                contact.setId(staffId.substring(staffId.length()-2) + GetTime.getNowTimeString("yyMMddHHmm") + GetRandom.getRandom(0, 99));
                 contact.setStaffId(staffId);
                 contact.setContactDetails("待填写");
                 contact.setContactValue("待填写");
