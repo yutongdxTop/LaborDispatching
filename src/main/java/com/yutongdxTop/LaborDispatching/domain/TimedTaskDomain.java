@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class TimedTaskDomain {  //定时任务域
@@ -35,8 +37,11 @@ public class TimedTaskDomain {  //定时任务域
 
         try {
             for (FreeTime freeTime : allFreeTime) {
-                Date timeEnd = GetTime.dateTransform(freeTime.getTimeEnd());
-                if (timeEnd.before(dateZero)) {  //如果空闲结束时间在今天之前，则删除该时间表
+                Date timeEnd = null;
+                if (!Objects.equals(freeTime.getTimeEnd(), "∞")) {
+                    timeEnd = GetTime.dateTransform(freeTime.getTimeEnd());
+                }
+                if (timeEnd != null && timeEnd.before(dateZero)) {  //如果空闲结束时间在今天之前，则删除该时间表
                     freeTimeMapper.deleteByPrimaryKey(freeTime.getId());
                 } else {
                     Date timeBegin = GetTime.dateTransform(freeTime.getTimeBegin());
@@ -46,7 +51,7 @@ public class TimedTaskDomain {  //定时任务域
                     }
                 }
             }
-
+            System.out.println("任务执行时间：" + LocalDateTime.now());
         } catch (Exception e) {
             e.printStackTrace();
         }
