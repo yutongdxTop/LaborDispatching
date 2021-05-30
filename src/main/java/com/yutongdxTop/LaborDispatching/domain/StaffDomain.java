@@ -4,6 +4,7 @@ import com.yutongdxTop.LaborDispatching.domain.pojo.Contact;
 import com.yutongdxTop.LaborDispatching.domain.pojo.FreeTime;
 import com.yutongdxTop.LaborDispatching.domain.pojo.Staff;
 import com.yutongdxTop.LaborDispatching.domain.pojo.StaffExample;
+import com.yutongdxTop.LaborDispatching.mapper.ContactMapper;
 import com.yutongdxTop.LaborDispatching.mapper.FreeTimeMapper;
 import com.yutongdxTop.LaborDispatching.mapper.StaffMapper;
 import com.yutongdxTop.LaborDispatching.service.StaffService;
@@ -21,6 +22,8 @@ public class StaffDomain implements StaffService {
     StaffMapper staffMapper;
     @Autowired
     FreeTimeMapper freeTimeMapper;
+    @Autowired
+    ContactMapper contactMapper;
 
     @Override
     public List<Staff> getAllStaffs() {
@@ -76,6 +79,7 @@ public class StaffDomain implements StaffService {
                 contact.setStaffId(staffId);
                 contact.setContactDetails("待填写");
                 contact.setContactValue("待填写");
+                i = i + contactMapper.insert(contact);
 
                 System.out.println("addStaff返回：" + i);
                 if (i == 0) {

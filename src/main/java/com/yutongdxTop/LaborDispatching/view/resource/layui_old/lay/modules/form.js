@@ -210,7 +210,8 @@ layui.define('layer', function(exports){
                 //如果是第一项，且文本值等于 placeholder，则清空初始值
                 if(selectedIndex === 0 && initValue === input.attr('placeholder')){
                   initValue = '';
-                }
+                };
+
                 //如果有选中值，则将输入框纠正为该值。否则清空输入框
                 input.val(initValue || '');
               }

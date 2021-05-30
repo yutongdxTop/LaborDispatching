@@ -1930,7 +1930,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
             dataMain.push(vals.join(','))
         });
         var filedata = "\ufeff" + dataTitle.join(',') + '\r\n' + dataMain.join('\r\n');
-        navigator.msSaveBlob(new Blob([decodeURIComponent(encodeURI(filedata))], {type: 'text/csv;charset=utf-8;'}),  (config.title || '订货清单_' + (config.index || '')) + '.' + type);
+        navigator.msSaveBlob(new Blob([decodeURIComponent(encodeURI(filedata))], {type: 'text/csv;charset=utf-8;'}),  (config.title || 'table_' + (config.index || '')) + '.' + type);
         return true;
     }
 
@@ -1970,7 +1970,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
       return dataTitle.join(',') + '\r\n' + dataMain.join('\r\n') + '\r\n' + dataTotal.join(',');
     }());
     
-    alink.download = (config.title || '订货清单_'+ (config.index || '')) + '.' + type;
+    alink.download = (config.title || 'table_'+ (config.index || '')) + '.' + type;
     document.body.appendChild(alink);
     alink.click();
     document.body.removeChild(alink); 

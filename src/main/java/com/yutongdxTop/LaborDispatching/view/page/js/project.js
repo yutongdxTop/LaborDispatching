@@ -58,6 +58,10 @@ layui.use(['form','layer','table','laytpl'],function(){
             content : "addProject.html",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
+                if (clientId !== -1) {  //客户无权利更改项目关联的客户编号和项目接单状态
+                    body.find(".clientId").attr("disabled","disabled").addClass("layui-disabled");
+                    body.find(".status").attr("disabled","disabled").addClass("layui-disabled");
+                }
                 if(edit){
                     body.find(".id").val(edit.id);
                     body.find(".type").val(edit.type);
@@ -69,8 +73,8 @@ layui.use(['form','layer','table','laytpl'],function(){
                     body.find(".time").val(edit.time);
                     form.render();
                 } else {
-                    clientId = decodeURI(window.top.location.href.split('&')[1]);
-                    body.find(".clientId").append('<option value="' + clientId + '" selected>' + "客户编号:" + clientId + '</option>');
+                    var id = decodeURI(window.top.location.href.split('&')[1]);
+                    body.find(".clientId").append('<option value="' + id + '" selected>' + "客户编号:" + id + '</option>');
                     body.find(".status").val("未接单");
                 }
                 setTimeout(function(){

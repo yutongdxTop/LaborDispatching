@@ -99,7 +99,7 @@ public class ProjectDomain implements ProjectService {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "添加失败 项目重复 不能重ID";
+            return "添加失败 项目重复 客户ID错误";
         }
 
     }
